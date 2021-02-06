@@ -13,7 +13,17 @@ def limpa():
         os.system('clear')
 
 
+def uso():
+    """ Modo de Uso da ferramenta """
+    print(" Modo de uso da ferramenta...")
+    print(f" $ python {sys.argv[0]} target")
+    sys.exit(0)
+
+
 limpa()
+
+if not len(sys.argv[1:]):
+    uso()
 
 openSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 openSocket.connect(("whois.iana.org",43))
