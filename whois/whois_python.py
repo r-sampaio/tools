@@ -1,6 +1,11 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
+# Date: 05/02/2021
+# Author: r-sampaio
+# Github: https://github.com/r-sampaio
+# Python version: 3.x
+
 import socket
 import sys
 import os
