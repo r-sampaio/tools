@@ -5,6 +5,7 @@ import socket
 import sys
 import os
 
+
 def limpa():
     """ Limpa a tela do terminal """
     if os.name == 'nt':
