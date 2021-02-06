@@ -19,14 +19,14 @@ def uso():
     sys.exit(0)
 
 
-if not len(sys.argv[1:]):
+if not len(sys.argv[2:]):
     uso()
 
 host = str(sys.argv[1])
 port = int(sys.argv[2])
 
 openSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-# openSocket.connect((str(sys.argv[1]),int(sys.argv[2])))
 openSocket.connect((host,port))
 banner = openSocket.recv(1024)
 print(banner.decode("utf-8"))
+openSocket.close()
