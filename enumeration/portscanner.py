@@ -24,7 +24,7 @@ def usage():
 if not len(sys.argv[2:]):
     usage()
 
-print(f"Host: \033[34m{sys.argv[1]}\033[m")
+print(f" Host: \033[34m{sys.argv[1]}\033[m")
 
 if sys.argv[2] == '-P':
     if not len(sys.argv[3:]):
