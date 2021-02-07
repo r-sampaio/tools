@@ -68,6 +68,7 @@ if option == '-d':
 if option == '-a':
     if not len(sys.argv[3:]):
         usage()
+    target = sys.argv[2]
     ext = sys.argv[3]
     with open('arquivo.txt','r') as wordlist:
         for arquivo in wordlist:
