@@ -8,13 +8,17 @@
 
 import hashlib
 import base64
+import crypt
 import sys
 
 def usage():
     """ Modo de Uso da ferramenta """
     print(f" $ python3 {sys.argv[0]} [-b] [encode/decode] [data]")
-    print(f" $ python3 {sys.argv[0]} [-s] [hash] [data] [wordlist]")
     print()
+    print(f" $ python3 {sys.argv[0]} [-c] [hash] [wordlist]")
+    print(f"   Salt: $6$AUJwtii8yHc4Tws7$")
+    print()
+    print(f" $ python3 {sys.argv[0]} [-s] [hash] [data] [wordlist]")
     print("   # Hashs suportados:")
     print("   - sha-1, sha-224, sha-256, sha-384, sha-512")
     print("   - sha-3-224, sha-3-256, sha-3-384, sha-3-512")
@@ -79,4 +83,17 @@ if argumento == '-s':
             text = hash.hexdigest()
             if text == texto_user:
                 print(f"{palavra.strip()} : {text}")
+                sys.exit(0)
+
+if argumento == '-c':
+    salt_hash = str(input('Salt: '))
+    senha_user = salt_hash + opcao_hash
+    lista = sys.argv[3]
+    with open(lista, 'r') as arquivo:
+        for palavra in arquivo:
+            sEnter = palavra.strip()
+            senha = sEnter
+            resposta = crypt.crypt(senha, salt_hash)
+            if resposta == senha_user:
+                print(f"{palavra.strip()} : {senha_user}")
                 sys.exit(0)
