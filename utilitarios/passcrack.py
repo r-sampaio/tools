@@ -45,7 +45,8 @@ if argumento == '-s':
     lista = sys.argv[4]
     with open(lista, 'r') as arquivo:
         for palavra in arquivo:
-            texto = palavra.encode()
+            sEnter = palavra.strip()
+            texto = sEnter.encode()
             if opcao_hash == 'sha-1':
                 hash = hashlib.sha1(texto)
             if opcao_hash == 'sha-224':
@@ -78,3 +79,4 @@ if argumento == '-s':
             text = hash.hexdigest()
             if text == texto_user:
                 print(f"{palavra.strip()} : {text}")
+                sys.exit(0)
