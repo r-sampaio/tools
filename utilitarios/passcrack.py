@@ -91,8 +91,7 @@ if argumento == '-c':
     lista = sys.argv[3]
     with open(lista, 'r') as arquivo:
         for palavra in arquivo:
-            sEnter = palavra.strip()
-            senha = sEnter
+            senha = palavra.strip()
             resposta = crypt.crypt(senha, salt_hash)
             if resposta == senha_user:
                 print(f"{palavra.strip()} : {senha_user}")
