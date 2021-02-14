@@ -8,8 +8,8 @@
 
 import hashlib
 import base64
-import crypt
 import sys
+import os
 
 def usage():
     """ Modo de Uso da ferramenta """
@@ -86,14 +86,18 @@ if argumento == '-s':
                 print(f"{palavra.strip()} : {text}")
                 sys.exit(0)
 
-if argumento == '-c':
-    salt_hash = str(input('Salt: '))
-    senha_user = salt_hash + opcao_hash
-    lista = sys.argv[3]
-    with open(lista, 'r') as arquivo:
-        for palavra in arquivo:
-            senha = palavra.strip()
-            resposta = crypt.crypt(senha, salt_hash)
-            if resposta == senha_user:
-                print(f"{palavra.strip()} : {senha_user}")
-                sys.exit(0)
+
+if os.name != 'nt':
+    import crypt
+
+    if argumento == '-c':
+        salt_hash = str(input('Salt: '))
+        senha_user = salt_hash + opcao_hash
+        lista = sys.argv[3]
+        with open(lista, 'r') as arquivo:
+            for palavra in arquivo:
+                senha = palavra.strip()
+                resposta = crypt.crypt(senha, salt_hash)
+                if resposta == senha_user:
+                    print(f"{palavra.strip()} : {senha_user}")
+                    sys.exit(0)
