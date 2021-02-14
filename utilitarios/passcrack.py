@@ -15,8 +15,9 @@ def usage():
     """ Modo de Uso da ferramenta """
     print(f" $ python3 {sys.argv[0]} [-b] [encode/decode] [data]")
     print()
-    print(f" $ python3 {sys.argv[0]} [-c] [hash] [wordlist]")
+    print(f" $ python3 {sys.argv[0]} [-c] [hash-less-salt] [wordlist]")
     print(f"   Salt: $6$AUJwtii8yHc4Tws7$")
+    print("   # Linux only")
     print()
     print(f" $ python3 {sys.argv[0]} [-s] [hash] [data] [wordlist]")
     print("   # Hashs suportados:")
