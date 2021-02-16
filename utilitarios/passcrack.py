@@ -19,7 +19,7 @@ def usage():
     print(f" | Salt: $6$AUJwtii8yHc4Tws7$")
     print(" └ # Linux only")
     print()
-    print(f" $ python3 {sys.argv[0]} [-s] [hash] [data] [wordlist]")
+    print(f" $ python3 {sys.argv[0]} [-s] [option] [hash] [wordlist]")
     print(" | # Hashs suportados:")
     print(" | - sha-1, sha-224, sha-256, sha-384, sha-512")
     print(" | - sha-3-224, sha-3-256, sha-3-384, sha-3-512")
