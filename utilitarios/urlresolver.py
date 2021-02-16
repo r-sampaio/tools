@@ -14,9 +14,9 @@ import urllib3
 def usage():
     """ Usage mode """
     print(f" DNS resolver           $ python3 {sys.argv[0]} [-r] [target]")
-    print(f" Brute force subdomain  $ python3 {sys.argv[0]} [-s] [target]")
-    print(f" Brute force directory  $ python3 {sys.argv[0]} [-d] [target]")
-    print(f" Brute force archive    $ python3 {sys.argv[0]} [-a] [target]")
+    print(f" Brute force subdomain  $ python3 {sys.argv[0]} [-s] [target] [wordlist]")
+    print(f" Brute force directory  $ python3 {sys.argv[0]} [-d] [target] [wordlist]")
+    print(f" Brute force archive    $ python3 {sys.argv[0]} [-a] [target] [wordlist] [EXT]")
     sys.exit(0)
 
 
@@ -33,12 +33,13 @@ if option == '-r':
     print(f"[\033[32m{host:^15}\033[m]  {target}")
 
 if option == '-s':
-    if not len(sys.argv[2:]):
+    if not len(sys.argv[3:]):
         usage()
     target = sys.argv[2]
+    lista  = sys.argv[3]
     host = socket.gethostbyname(target)
     print(f"[\033[32m{host:^15}\033[m]  {target}")
-    with open('list.txt','r') as wordlist:
+    with open(lista,'r') as wordlist:
         for dns in wordlist:
             try:
                 hostname = f"{dns.strip()}.{target.strip()}"
@@ -48,10 +49,11 @@ if option == '-s':
                 print(end='')
 
 if option == '-d':
-    if not len(sys.argv[2:]):
+    if not len(sys.argv[3:]):
         usage()
     target = sys.argv[2]
-    with open('dir.txt','r') as wordlist:
+    lista  = sys.argv[3]
+    with open(lista,'r') as wordlist:
         for directory in wordlist:
             try:
                 hostname = f"{target.strip()}/{directory.strip()}/"
@@ -66,11 +68,12 @@ if option == '-d':
                 print(end='')
 
 if option == '-a':
-    if not len(sys.argv[3:]):
+    if not len(sys.argv[4:]):
         usage()
     target = sys.argv[2]
-    ext = sys.argv[3]
-    with open('arquivo.txt','r') as wordlist:
+    lista  = sys.argv[3]
+    ext    = sys.argv[4]
+    with open(lista,'r') as wordlist:
         for arquivo in wordlist:
             try:
                 hostname = f"{target.strip()}/{arquivo.strip()}.{ext.strip()}"
