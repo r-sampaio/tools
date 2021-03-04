@@ -5,15 +5,15 @@ os.system('taskkill /F /IM explorer.exe')
 
 os.system('cls')
 
-print('\033[34mProcessing.\033[m')
+print('\033[41mProcessing.\033[m')
 time.sleep(1)
 os.system('cls')
 
-print('\033[34mProcessing..\033[m')
+print('\033[41mProcessing..\033[m')
 time.sleep(1)
 os.system('cls')
 
-print('\033[34mProcessing...\033[m')
+print('\033[41mProcessing...\033[m')
 time.sleep(1)
 os.system('cls')
 

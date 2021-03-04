@@ -8,16 +8,6 @@
 
 import socket
 import sys
-import os
-
-
-def limpa():
-    """ Limpa a tela do terminal """
-    if os.name == 'nt':
-        os.system('cls')
-    else:
-        os.system('clear')
-
 
 def uso():
     """ Modo de Uso da ferramenta """
@@ -25,8 +15,6 @@ def uso():
     print(f" $ python {sys.argv[0]} target")
     sys.exit(0)
 
-
-limpa()
 
 if not len(sys.argv[1:]):
     uso()
