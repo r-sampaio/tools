@@ -20,7 +20,7 @@ def usage():
     sys.exit(0)
 
 
-if not len(sys.argv[1:]):
+if not len(sys.argv[1:]) or sys.argv[1] == '-h':
     usage()
 
 option = sys.argv[1]
